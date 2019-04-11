@@ -75,8 +75,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             [Tooltip("set it to 0.1 or more if you get stuck in wall")]
             public float shellOffset; //reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)
         }
-
-
+        
         public Camera cam;
         public MovementSettings movementSettings = new MovementSettings();
         public MouseLook mouseLook = new MouseLook();
