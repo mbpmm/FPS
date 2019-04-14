@@ -8,16 +8,13 @@ public class Player : MonoBehaviour
 {
     public int health;
     public Slider healthBar;
-
-
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+    public bool isDead;
+    
     // Start is called before the first frame update
     void Start()
     {
         health = 100;
+        isDead = false;
     }
 
     // Update is called once per frame

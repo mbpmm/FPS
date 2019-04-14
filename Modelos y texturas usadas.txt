@@ -3,3 +3,5 @@ https://sketchfab.com/3d-models/despicable-me-fart-gun-361d4ee6b416422186e18e5e6
 https://sketchfab.com/3d-models/pinxos-14b0d6c88f304d82b02be78c48eb7cbb  TRAMPA
 
 https://www.pexels.com/photo/black-and-white-gray-grey-smooth-1050305/ TEXTURA METAL TRAMPA
+
+https://assetstore.unity.com/packages/2d/textures-materials/sky/skybox-series-free-103633 SKYBOX

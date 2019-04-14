@@ -8,21 +8,14 @@ public class gun : MonoBehaviour
     public LayerMask rayCastLayer;
     public float rayDistance;
     public Image crosshair;
-    public static int points;
-    public static int trapsDestroyed;
     public Text pointsText;
-
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+    private GameObject manager;
 
     // Start is called before the first frame update
     void Start()
     {
-        points = 0;
-        trapsDestroyed = 0;
-        pointsText.text = "Points: " + points;
+        manager = GameObject.Find("GameManager");
+        pointsText.text = "Points: " + manager.GetComponent<Manager>().points;
     }
 
     // Update is called once per frame
@@ -44,8 +37,8 @@ public class gun : MonoBehaviour
                     if (Input.GetMouseButton(0))
                     {
                         hit.transform.gameObject.SetActive(false);
-                        points += 100;
-                        trapsDestroyed++;
+                        manager.GetComponent<Manager>().points += 100;
+                        manager.GetComponent<Manager>().traps++;
                     }
                     break;
             }
@@ -56,6 +49,6 @@ public class gun : MonoBehaviour
             crosshair.color = Color.green;
         }
 
-        pointsText.text = "Points: " + points;
+        pointsText.text = "Points: " + manager.GetComponent<Manager>().points;
     }
 }
