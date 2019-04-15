@@ -41,6 +41,15 @@ public class gun : MonoBehaviour
                         manager.GetComponent<Manager>().traps++;
                     }
                     break;
+                case "fantasmas":
+                    crosshair.color = Color.red;
+                    if (Input.GetMouseButton(0))
+                    {
+                        hit.transform.gameObject.SetActive(false);
+                        manager.GetComponent<Manager>().points += 200;
+                        manager.GetComponent<Manager>().ghosts++;
+                    }
+                    break;
             }
         }
         else

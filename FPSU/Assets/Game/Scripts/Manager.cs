@@ -7,7 +7,7 @@ public class Manager : MonoBehaviour
 {
     public int points;
     public int traps;
-
+    public int ghosts;
     private static Manager instance;
 
     public static Manager Get()
@@ -19,6 +19,7 @@ public class Manager : MonoBehaviour
     {
         points = 0;
         traps = 0;
+        ghosts = 0;
         if (instance != null)
         {
             Destroy(gameObject);

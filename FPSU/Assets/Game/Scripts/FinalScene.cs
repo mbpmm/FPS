@@ -8,6 +8,7 @@ public class FinalScene : MonoBehaviour
 {
     public Text points;
     public Text trapsDestroyed;
+    public Text ghostKilled;
     private GameObject pointsNum;
 
     // Start is called before the first frame update
@@ -23,5 +24,6 @@ public class FinalScene : MonoBehaviour
     {
         points.text = "Points: " + pointsNum.GetComponent<Manager>().points;
         trapsDestroyed.text = "Traps Destroyed: " + pointsNum.GetComponent<Manager>().traps;
+        ghostKilled.text = "Ghost killed: " + pointsNum.GetComponent<Manager>().ghosts;
     }
 }

@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
             healthBar.fillRect.gameObject.SetActive(false);
         }
 
-        if (health==0||transform.position.y<-10.0f)
+        if (health<=0||transform.position.y<-10.0f)
         {
             SceneManager.LoadScene("FinalScene");
         }
@@ -40,9 +40,15 @@ public class Player : MonoBehaviour
             
             Rigidbody rig = GetComponent<Rigidbody>();
             Vector3 vel = -rig.velocity;
-            rig.AddForce(vel.normalized*10000.0f);
-            Debug.Log("colisiona");
+            rig.AddForce(vel.normalized*15000.0f);
+        }   
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "fantome" || other.gameObject.name == "fantome(Clone)")
+        {
+            health -= 10;
         }
-        
     }
 }
