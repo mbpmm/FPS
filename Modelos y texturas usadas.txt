@@ -11,3 +11,5 @@
 -"4k Seamless Sci-Fi Greeble Textures with Color and Normal Maps", Bill, http://www.texturemate.com/Textures/seamless-seamless-sci-fi_Free_Texture_280.
 
 - PRAIRAT_FHUNTA, https://pixabay.com/illustrations/black-texture-background-stone-2398956/.
+
+- "HAARP gun", Henry VIII, https://sketchfab.com/3d-models/haarp-gun-c31cbdf0648c462bbf24f91091f57311.

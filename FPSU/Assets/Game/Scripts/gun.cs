@@ -11,6 +11,7 @@ public class gun : MonoBehaviour
     public Text pointsText;
 
     private GameObject manager;
+    private GameObject Player;
     private int trapPoints;
     private int ghostPoints;
     // Start is called before the first frame update
@@ -20,6 +21,7 @@ public class gun : MonoBehaviour
         ghostPoints = 200;
         manager = GameObject.Find("GameManager");
         pointsText.text = "Points: " + manager.GetComponent<Manager>().points;
+        Player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -34,27 +36,37 @@ public class gun : MonoBehaviour
 
             string layerHitted = LayerMask.LayerToName(hit.transform.gameObject.layer);
 
-            switch (layerHitted)
+            if (Player.GetComponent<Player>().Gun==global::Player.GunEquipped.TrapGun)
             {
-                case "trampas":
-                    crosshair.color = Color.red;
-                    if (Input.GetMouseButton(0))
-                    {
-                        hit.transform.gameObject.SetActive(false);
-                        manager.GetComponent<Manager>().points += trapPoints;
-                        manager.GetComponent<Manager>().traps++;
-                    }
-                    break;
-                case "fantasmas":
-                    crosshair.color = Color.red;
-                    if (Input.GetMouseButton(0))
-                    {
-                        hit.transform.gameObject.SetActive(false);
-                        manager.GetComponent<Manager>().points += ghostPoints;
-                        manager.GetComponent<Manager>().ghosts++;
-                    }
-                    break;
+                switch (layerHitted)
+                {
+                    case "trampas":
+                        crosshair.color = Color.red;
+                        if (Input.GetMouseButton(0))
+                        {
+                            hit.transform.gameObject.SetActive(false);
+                            manager.GetComponent<Manager>().points += trapPoints;
+                            manager.GetComponent<Manager>().traps++;
+                        }
+                        break;
+                }
             }
+            else if(Player.GetComponent<Player>().Gun == global::Player.GunEquipped.GhostGun)
+            {
+                switch (layerHitted)
+                {
+                    case "fantasmas":
+                        crosshair.color = Color.red;
+                        if (Input.GetMouseButton(0))
+                        {
+                            hit.transform.gameObject.SetActive(false);
+                            manager.GetComponent<Manager>().points += ghostPoints;
+                            manager.GetComponent<Manager>().ghosts++;
+                        }
+                        break;
+                }
+            }
+            
         }
         else
         {

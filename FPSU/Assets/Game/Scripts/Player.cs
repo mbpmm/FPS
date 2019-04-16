@@ -6,23 +6,33 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+
+    public enum GunEquipped
+    {
+        TrapGun=1,
+        GhostGun
+    };
+
     public int health;
     public Slider healthBar;
-    public bool isDead;
+    public GameObject gun1;
+    public GameObject gun2;
+    public GunEquipped Gun;
 
     private int trapDamage;
     private int ghostDamage;
     private float heightLimit;
     private float knockBackForce;
+
     // Start is called before the first frame update
     void Start()
     {
         health = 100;
-        isDead = false;
         trapDamage = 50;
         ghostDamage = 10;
         heightLimit = -10.0f;
         knockBackForce = 15000.0f;
+        Gun = GunEquipped.TrapGun;
     }
 
     // Update is called once per frame
@@ -37,6 +47,19 @@ public class Player : MonoBehaviour
         if (health<=0||transform.position.y<heightLimit)
         {
             SceneManager.LoadScene("FinalScene");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Gun = GunEquipped.TrapGun;
+            gun1.gameObject.SetActive(true);
+            gun2.gameObject.SetActive(false);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Gun = GunEquipped.GhostGun;
+            gun1.gameObject.SetActive(false);
+            gun2.gameObject.SetActive(true);
         }
     }
 
