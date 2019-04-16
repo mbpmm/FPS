@@ -19,7 +19,7 @@ public class fantasma : MonoBehaviour
 
         if (transform.position.x < -15.0f || transform.position.x > 35.0f || transform.position.z < -15.0f || transform.position.z > 35.0f )
         {
-            transform.position=new Vector3(10,-10,10) ;
+            gameObject.SetActive(false);
         }
     }
 }

@@ -7,3 +7,7 @@
 - "Skybox Series Free", AVIONX, https://assetstore.unity.com/packages/2d/textures-materials/sky/skybox-series-free-103633.
 
 -"Ghost", OncleBen, https://sketchfab.com/3d-models/ghost-6fb3dd0ce5bf436db3c40796bd360820#download.
+
+-"4k Seamless Sci-Fi Greeble Textures with Color and Normal Maps", Bill, http://www.texturemate.com/Textures/seamless-seamless-sci-fi_Free_Texture_280.
+
+- PRAIRAT_FHUNTA, https://pixabay.com/illustrations/black-texture-background-stone-2398956/.

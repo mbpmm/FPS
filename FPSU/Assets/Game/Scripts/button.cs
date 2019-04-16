@@ -21,6 +21,7 @@ public class button : MonoBehaviour
     {
         pointsNum.GetComponent<Manager>().points = 0;
         pointsNum.GetComponent<Manager>().traps = 0;
+        pointsNum.GetComponent<Manager>().ghosts = 0;
         SceneManager.LoadScene("GameScene");
     }
 
@@ -28,6 +29,7 @@ public class button : MonoBehaviour
     {
         pointsNum.GetComponent<Manager>().points = 0;
         pointsNum.GetComponent<Manager>().traps = 0;
+        pointsNum.GetComponent<Manager>().ghosts = 0;
         SceneManager.LoadScene("IntroScene");
     }
 
