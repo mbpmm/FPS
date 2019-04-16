@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class FinalScene : MonoBehaviour
+public class UIFinalScene : MonoBehaviour
 {
     public Text points;
     public Text trapsDestroyed;

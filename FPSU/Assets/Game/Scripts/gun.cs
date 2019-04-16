@@ -9,11 +9,15 @@ public class gun : MonoBehaviour
     public float rayDistance;
     public Image crosshair;
     public Text pointsText;
-    private GameObject manager;
 
+    private GameObject manager;
+    private int trapPoints;
+    private int ghostPoints;
     // Start is called before the first frame update
     void Start()
     {
+        trapPoints = 100;
+        ghostPoints = 200;
         manager = GameObject.Find("GameManager");
         pointsText.text = "Points: " + manager.GetComponent<Manager>().points;
     }
@@ -37,7 +41,7 @@ public class gun : MonoBehaviour
                     if (Input.GetMouseButton(0))
                     {
                         hit.transform.gameObject.SetActive(false);
-                        manager.GetComponent<Manager>().points += 100;
+                        manager.GetComponent<Manager>().points += trapPoints;
                         manager.GetComponent<Manager>().traps++;
                     }
                     break;
@@ -46,7 +50,7 @@ public class gun : MonoBehaviour
                     if (Input.GetMouseButton(0))
                     {
                         hit.transform.gameObject.SetActive(false);
-                        manager.GetComponent<Manager>().points += 200;
+                        manager.GetComponent<Manager>().points += ghostPoints;
                         manager.GetComponent<Manager>().ghosts++;
                     }
                     break;

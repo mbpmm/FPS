@@ -9,12 +9,20 @@ public class Player : MonoBehaviour
     public int health;
     public Slider healthBar;
     public bool isDead;
-    
+
+    private int trapDamage;
+    private int ghostDamage;
+    private float heightLimit;
+    private float knockBackForce;
     // Start is called before the first frame update
     void Start()
     {
         health = 100;
         isDead = false;
+        trapDamage = 50;
+        ghostDamage = 10;
+        heightLimit = -10.0f;
+        knockBackForce = 15000.0f;
     }
 
     // Update is called once per frame
@@ -26,7 +34,7 @@ public class Player : MonoBehaviour
             healthBar.fillRect.gameObject.SetActive(false);
         }
 
-        if (health<=0||transform.position.y<-10.0f)
+        if (health<=0||transform.position.y<heightLimit)
         {
             SceneManager.LoadScene("FinalScene");
         }
@@ -36,11 +44,11 @@ public class Player : MonoBehaviour
     {
         if (col.gameObject.name=="pinxos"||col.gameObject.name=="pinxos(Clone)")
         {
-            health -= 50;
+            health -= trapDamage;
             
             Rigidbody rig = GetComponent<Rigidbody>();
             Vector3 vel = -rig.velocity;
-            rig.AddForce(vel.normalized*15000.0f);
+            rig.AddForce(vel.normalized*knockBackForce);
         }   
     }
 
@@ -48,7 +56,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.name == "fantome" || other.gameObject.name == "fantome(Clone)")
         {
-            health -= 10;
+            health -= ghostDamage;
         }
     }
 }

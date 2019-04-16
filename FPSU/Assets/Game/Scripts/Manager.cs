@@ -8,6 +8,7 @@ public class Manager : MonoBehaviour
     public int points;
     public int traps;
     public int ghosts;
+    
     private static Manager instance;
 
     public static Manager Get()
