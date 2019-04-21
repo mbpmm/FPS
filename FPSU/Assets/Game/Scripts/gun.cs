@@ -9,14 +9,17 @@ public class gun : MonoBehaviour
     public float rayDistance;
     public Image crosshair;
     public Text pointsText;
+    public GameObject bala;
 
     private GameObject manager;
     private GameObject Player;
     private int trapPoints;
     private int ghostPoints;
+    private int gunDamage;
     // Start is called before the first frame update
     void Start()
     {
+        gunDamage = 10;
         trapPoints = 100;
         ghostPoints = 200;
         manager = GameObject.Find("GameManager");
@@ -57,11 +60,17 @@ public class gun : MonoBehaviour
                 {
                     case "fantasmas":
                         crosshair.color = Color.red;
-                        if (Input.GetMouseButton(0))
+                        if (Input.GetMouseButtonDown(0))
                         {
-                            hit.transform.gameObject.SetActive(false);
-                            manager.GetComponent<Manager>().points += ghostPoints;
-                            manager.GetComponent<Manager>().ghosts++;
+                            GameObject balas= Instantiate(bala,transform.position, Quaternion.identity);
+                            balas.AddComponent<Rigidbody>();
+                            balas.GetComponent<Rigidbody>().AddForce(transform.forward*1000.0f);
+                            hit.transform.gameObject.GetComponent<fantasma>().health= hit.transform.gameObject.GetComponent<fantasma>().health-gunDamage;
+                            if (hit.transform.gameObject.GetComponent<fantasma>().health==0)
+                            {
+                                manager.GetComponent<Manager>().points += ghostPoints;
+                                manager.GetComponent<Manager>().ghosts++;
+                            }
                         }
                         break;
                 }
