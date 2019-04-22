@@ -1,18 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class gun : MonoBehaviour
 {
     public LayerMask rayCastLayer;
     public float rayDistance;
-    public Image crosshair;
-    public Text pointsText;
-    public GameObject bala;
 
     private GameObject manager;
     private GameObject Player;
+    private GameObject UIMan;
     private int trapPoints;
     private int ghostPoints;
     private int gunDamage;
@@ -23,7 +20,7 @@ public class gun : MonoBehaviour
         trapPoints = 100;
         ghostPoints = 200;
         manager = GameObject.Find("GameManager");
-        pointsText.text = "Points: " + manager.GetComponent<Manager>().points;
+        UIMan = GameObject.Find("Canvas");
         Player = GameObject.Find("Player");
     }
 
@@ -44,7 +41,7 @@ public class gun : MonoBehaviour
                 switch (layerHitted)
                 {
                     case "trampas":
-                        crosshair.color = Color.red;
+                        UIMan.GetComponent<UIManager>().crosshair.color = Color.red;
                         if (Input.GetMouseButton(0))
                         {
                             hit.transform.gameObject.SetActive(false);
@@ -59,13 +56,9 @@ public class gun : MonoBehaviour
                 switch (layerHitted)
                 {
                     case "fantasmas":
-                        crosshair.color = Color.red;
+                        UIMan.GetComponent<UIManager>().crosshair.color = Color.red;
                         if (Input.GetMouseButtonDown(0))
                         {
-                            GameObject gun = GameObject.Find("Bala");
-                            GameObject balas= Instantiate(bala,gun.transform.position, Quaternion.identity);
-                            balas.AddComponent<Rigidbody>();
-                            balas.GetComponent<Rigidbody>().AddForce(transform.forward*1500.0f);
                             hit.transform.gameObject.GetComponent<fantasma>().health= hit.transform.gameObject.GetComponent<fantasma>().health-gunDamage;
                             if (hit.transform.gameObject.GetComponent<fantasma>().health==0)
                             {
@@ -81,9 +74,7 @@ public class gun : MonoBehaviour
         else
         {
             Debug.DrawRay(transform.position, transform.forward * rayDistance, Color.white);
-            crosshair.color = Color.green;
+            UIMan.GetComponent<UIManager>().crosshair.color = Color.green;
         }
-
-        pointsText.text = "Points: " + manager.GetComponent<Manager>().points;
     }
 }

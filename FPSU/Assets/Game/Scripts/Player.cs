@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
@@ -14,7 +13,6 @@ public class Player : MonoBehaviour
     };
 
     public int health;
-    public Slider healthBar;
     public GameObject gun1;
     public GameObject gun2;
     public GunEquipped Gun;
@@ -38,12 +36,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthBar.value = health;
-        if (healthBar.value==0)
-        {
-            healthBar.fillRect.gameObject.SetActive(false);
-        }
-
         if (health<=0||transform.position.y<heightLimit)
         {
             SceneManager.LoadScene("FinalScene");
