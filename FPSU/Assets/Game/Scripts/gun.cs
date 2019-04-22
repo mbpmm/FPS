@@ -62,9 +62,10 @@ public class gun : MonoBehaviour
                         crosshair.color = Color.red;
                         if (Input.GetMouseButtonDown(0))
                         {
-                            GameObject balas= Instantiate(bala,transform.position, Quaternion.identity);
+                            GameObject gun = GameObject.Find("Bala");
+                            GameObject balas= Instantiate(bala,gun.transform.position, Quaternion.identity);
                             balas.AddComponent<Rigidbody>();
-                            balas.GetComponent<Rigidbody>().AddForce(transform.forward*1000.0f);
+                            balas.GetComponent<Rigidbody>().AddForce(transform.forward*1500.0f);
                             hit.transform.gameObject.GetComponent<fantasma>().health= hit.transform.gameObject.GetComponent<fantasma>().health-gunDamage;
                             if (hit.transform.gameObject.GetComponent<fantasma>().health==0)
                             {
